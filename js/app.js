@@ -39,7 +39,97 @@ import React, {Component} from 'react'
 function app() {
     // start app
     // new Router()
-    DOM.render(<p>test 2</p>, document.querySelector('.container'))
+
+    var AppView = React.createClass ({
+    	
+    	_increaseTime: function() {
+    		if(!this.state.changingTime){
+    				var incrementYear = function() {
+    					this.setState({
+	    				year: this.state.year + 1,
+	    				changingTime: true
+	    			})
+    				}
+	    			
+	    		var boundIncrementer = incrementYear.bind(this)
+    			this.intervalId = setInterval(boundIncrementer, 500)	
+    			
+    		}
+    		// else{
+    		// 	clearInterval(this.intervalId)
+    		// 	this.setState({
+    		// 		changingTime: false
+    		// 	})
+    		// }
+    	},
+
+    	_decreaseTime: function() {
+    		if(!this.state.changingTime){
+    				var decrementYear = function() {
+    					this.setState({
+	    				year: this.state.year - 1,
+	    				changingTime: true
+
+	    			})
+    				}
+	    			
+	    		var boundDecrementer = decrementYear.bind(this)
+    			this.intervalId = setInterval(boundDecrementer, 500)	
+    			
+    		}
+    		// else{
+    		// 	clearInterval(this.intervalId)
+    		// 	this.setState({
+    		// 		changingTime: false
+    		// 	})
+    		// }
+    	},
+
+    	_stopTime: function() {
+    			clearInterval(this.intervalId)
+    			this.setState({
+    				changingTime: false
+    			})
+    	},
+
+    	getInitialState: function() {
+    		return {
+    			year: 2000,
+    			changingTime: false
+    		}
+    	},	
+
+    	render: function() {
+
+    		return(
+    			<div className = "timerContainer">
+    				<h1 className="headline"> Time Machine! </h1> 
+    				<h3>{this.state.year}</h3>
+    				<button className="forwardButton" onClick={this._increaseTime}> Go forward! </button> 
+    				<button className="backwardButton" onClick={this._decreaseTime}> Go backwards! </button>
+    				<button className="stopButton" onClick={this._stopTime}> Stop time! </button>
+    			</div>
+    		)
+    	}
+
+    })
+
+
+
+    DOM.render(<AppView/>, document.querySelector('.container'))
 }
 
 app()
+
+
+
+
+
+
+
+
+
+
+
+
+

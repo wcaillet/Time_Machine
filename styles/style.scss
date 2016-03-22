@@ -127,3 +127,61 @@ body {
 /**
  * App code
  */
+
+// .timerContainer {
+//     border: 5px solid purple;
+// }
+
+.container{
+    display: block;
+    width: 60%;
+    // margin: auto;
+    margin: 20px 100px;
+    text-align: center;
+    border: 5px solid navy;
+
+}
+
+button{
+    //color: purple;
+    margin: 20px;
+    border: 2px solid purple;
+}
+
+img{
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+    
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+    
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  img {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
